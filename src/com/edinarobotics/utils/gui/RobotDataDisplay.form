@@ -31,23 +31,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="disable" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="Enable" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="leftMotorSpeedLabel" max="32767" attributes="1"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="leftMotorSpeedField" min="-2" pref="108" max="-2" attributes="1"/>
-                              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rightMotorSpeedLabel" max="32767" attributes="1"/>
+                      <Component id="leftMotorSpeedLabel" min="-2" pref="97" max="-2" attributes="1"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="leftMotorSpeedField" min="-2" pref="108" max="-2" attributes="1"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="rightMotorSpeedLabel" min="-2" pref="119" max="-2" attributes="1"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="rightMotorSpeedField" min="-2" pref="107" max="-2" attributes="1"/>
                   </Group>
@@ -59,6 +47,14 @@
                       <Component id="shooterRotationLabel" min="-2" pref="146" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="shooterRotationField" min="-2" pref="121" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="disable" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="Enable" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="379" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -96,8 +92,8 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="leftMotorSpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="leftMotorSpeedField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rightMotorSpeedField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rightMotorSpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rightMotorSpeedField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -124,11 +120,19 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
-              <Component id="Enable" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="disable" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="Enable" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="disable" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane1" pref="131" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -252,5 +256,22 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator4">
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="logField">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Session Log."/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
