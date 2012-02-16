@@ -10,9 +10,10 @@ package com.edinarobotics.zephyr;
 
 import com.edinarobotics.utils.autonomous.AutonomousManager;
 import com.edinarobotics.utils.autonomous.AutonomousStep;
+import com.edinarobotics.utils.gui.RobotDataDisplay;
 import com.edinarobotics.zephyr.autonomous.IdleStopStep;
-import com.edinarobotics.utils.helperClasses.ToggleHelper;
 import com.edinarobotics.utils.gui.StartUp;
+import com.edinarobotics.utils.threads.RobotThread;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,11 +22,10 @@ import com.edinarobotics.utils.gui.StartUp;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class Zephyr {
+public class Zephyr implements RobotThread{
     //Driving Variables
     public double leftDrive = 0;
     public double rightDrive = 0;
-    private final double ONE_STICK_MULTIPLIER = 0.5;
    
     //Shooter Variables
     public double shooterSpeed = 0;
@@ -34,10 +34,6 @@ public class Zephyr {
     private final double SHOOTER_SPEED_STEP = 0.0005;
     private double lastManualSpeed = 0;
     
-     //Camera Variables
-     public double cameraSetX;
-     public double cameraSetY;
-     private double CAMERA_STEP = .005;
      //Collector Variables
      public int collectorLift = 0;
      public boolean collectorSpin = false;
@@ -47,9 +43,24 @@ public class Zephyr {
      public boolean isEnabled;
      public boolean isAutonomous;
      public boolean isOperatorControl;
+     public RobotDataDisplay display;
+     public boolean modeIsOperatorControl;
+     public boolean continueRunning;
     /**
      * This function is called once each time the robot enters autonomous mode.
      */
+    public void run(){
+        while(continueRunning){
+            if(isEnabled){
+                if(modeIsOperatorControl){
+                    operatorControl();
+                }
+                else{
+                    autonomous();
+                }
+            }
+        }
+    }
     public void autonomous() {
         AutonomousStep[] steps = new AutonomousStep[1];
         steps[0] = new IdleStopStep(this);
@@ -60,135 +71,29 @@ public class Zephyr {
     /**
      * This function is called once each time the robot enters operator control.
      */
-    /*
+    
     public void operatorControl() 
     {
-        
-        
-        // Initiate components
-        ToggleHelper button3 = new ToggleHelper();
-        while(isOperatorControl&&isEnabled)
-        {*/
-           //************GAMEPAD 1****************************************//
-           // Set values for the drive speeds of the robot
-           //Using 0.9 as comparison value to avoid floating point problems
-           //Shouldn't ever be an issue but just in case
-           /*
-           if(Math.abs(driveGamepad.getDPadY())<=0.9){
-               //Normal joystick drive. D-pad is not 1 or -1
-               // Filter the joysticks on the gamepads according to the filters
-               // initialized
-               GamepadResult joystick = filters.filter(driveGamepad.getJoysticks());
-               leftDrive = joystick.getLeftY();
-               rightDrive = joystick.getRightY();
-           }
-           else{
-               //Single direction, forward/backward drive with the d-pad.
-               double oneStickDriveValue = driveGamepad.getDPadY() * ONE_STICK_MULTIPLIER;
-               leftDrive = oneStickDriveValue;
-               rightDrive = oneStickDriveValue;
-           }
-           
-           if(driveGamepad.getRawButton(Gamepad.RIGHT_BUMPER))
-           {
-               collectorLift = 1;
-           }
-           else if(driveGamepad.getRawButton(Gamepad.RIGHT_TRIGGER))
-           {
-               collectorLift = -1;
-           }
-           else{
-               collectorLift = 0;
-           }
-           if(driveGamepad.getRawButton(Gamepad.LEFT_TRIGGER))
-           {
-               collectorSpin = true;
-           }
-           else{
-               collectorSpin = false;
-           }
-            if(driveGamepad.getRawButton(Gamepad.LEFT_BUMPER))
-           {
-               convMove = true;
-           }
-           else{
-               convMove = false;
-           }
-           if(button3.isToggled(driveGamepad.getRawButton(Gamepad.BUTTON_3)))
-           {
-               shifters = !shifters;
-           }*/
-           //******************GAMEPAD 2*********************************//
-           // If the right bumper on the shootGamepad is pushed, speed up the
-           // shooter
-            /*
-           if(shootGamepad.getRawButton(Gamepad.RIGHT_BUMPER))
-           {
-               //Step speed of shooter up.
-               shooterSpeed += SHOOTER_SPEED_STEP;
-               
-               // Limit the speed of the shooter to not exceed -1
-               if(shooterSpeed >= 1)
-               {
-                   shooterSpeed = 1;
-               }
-               
-               // Store the speed of the shooter to a second variable
-               lastManualSpeed = shooterSpeed;
-           }
-           
-           // If the left bumper on the shootGamepad is pushed, slow down the
-           // shooter
-           else if(shootGamepad.getRawButton(Gamepad.RIGHT_TRIGGER))
-           {
-               //Step speed of shooter down.
-               shooterSpeed -= SHOOTER_SPEED_STEP;
-               
-               // Limit the speed of the shooter to not go past 0
-               if(shooterSpeed<=0)
-               {
-                   shooterSpeed = 0;
-               }
-               
-               // Store the speed of the shooter to a second variable
-               lastManualSpeed = shooterSpeed;
-           }
-           
-           // Jump shooter speed to max if button 1 on the shootGamepad is
-           // pushed
-           if(shootGamepad.getRawButton(Gamepad.BUTTON_1))
-           {
-               // Max is 1
-               shooterSpeed = 1;
-           }
-           // Jump shooter speed to 50% if button 3 on the shootGamepad is
-           // pushed
-           else if(shootGamepad.getRawButton(Gamepad.BUTTON_3)){
-               shooterSpeed = 0.5;
-           }
-           // Jump shooter speed to the min if button 3 on the shootGamepad is
-           // pushed
-           else if(shootGamepad.getRawButton(Gamepad.BUTTON_2))
-           {
-               // Min is 0
-               shooterSpeed = 0;
-           }
-           
-           shooterRotateSpeed = filters.filter(shootGamepad.getJoysticks()).getRightX();
-           
-           // Set the camera servo positions
-           cameraSetY = components.cameraServoVertical.get() + shootGamepad.getDPadY() * CAMERA_STEP;
-           ballLoaderUp = shootGamepad.getRawButton(Gamepad.LEFT_TRIGGER) || 
-                          shootGamepad.getRawButton(Gamepad.LEFT_BUMPER);
-           mechanismSet();
+        while(isOperatorControl && isEnabled){
+            //TODO Add support for the joysticks.
+            System.out.println("In teleop and proud");
+            mechanismSet();
         }
     }
-    */
+    
+    
     /**
      * Updates all parts of the robot to avoid safety timeouts
      */
     public void mechanismSet(){
-        
+        display.setLeftSpeed(Double.toString(leftDrive));
+        display.setRightSpeed(Double.toString(rightDrive));
+        display.setShooterSpeed(Double.toString(shooterSpeed));
+        display.setShooterRotation(Double.toString(shooterRotateSpeed));
+        display.setShooterPiston(Boolean.toString(convMove));
+        display.setCollectorSpin(Boolean.toString(collectorSpin));
+        display.setCollectorConveyorField(Boolean.toString(convMove));
+        display.setCollectorLift(Integer.toString(collectorLift));
     }
     
     /**

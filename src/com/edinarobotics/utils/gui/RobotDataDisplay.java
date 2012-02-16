@@ -33,7 +33,7 @@ public class RobotDataDisplay extends javax.swing.JFrame {
     public void setRightSpeed(String speed){
         rightMotorSpeedField.setText(speed);
     }
-    public void shooterSpeed(String speed){
+    public void setShooterSpeed(String speed){
         shooterSpeedField.setText(speed);
     }
     public void setShooterRotation(String speed){
