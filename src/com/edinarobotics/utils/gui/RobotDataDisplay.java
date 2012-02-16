@@ -60,7 +60,7 @@ public class RobotDataDisplay extends javax.swing.JFrame {
     }
     public void updateLog(String event){
         Date currentDate = new Date();
-        logField.append("Event Time: "+Long.toString((currentDate.getTime()-timeOffset)) 
+        logField.append("\nEvent Time: "+Long.toString((currentDate.getTime()-timeOffset)) 
                 +" : "+ event+"\n");
     }
     @SuppressWarnings("unchecked")
@@ -312,6 +312,7 @@ public class RobotDataDisplay extends javax.swing.JFrame {
             BufferedWriter logWriter = new BufferedWriter(new FileWriter(
                                     JOptionPane.showInputDialog(null, 
                                         "What is the location of the file to write to?")));
+            logWriter.write(logField.getText());
             logWriter.close();
         }
         catch(Exception e){
