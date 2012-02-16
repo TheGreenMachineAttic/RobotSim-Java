@@ -1,0 +1,8 @@
+/__MACOSX
+/build
+/j2meclasses
+/nbproject/private
+/suite
+/dist
+*.jar
+*.class

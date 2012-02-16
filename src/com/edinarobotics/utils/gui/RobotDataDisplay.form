@@ -1,0 +1,256 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JSeparator" name="jSeparator2">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="disable" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Enable" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="leftMotorSpeedLabel" max="32767" attributes="1"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="leftMotorSpeedField" min="-2" pref="108" max="-2" attributes="1"/>
+                              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rightMotorSpeedLabel" max="32767" attributes="1"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="rightMotorSpeedField" min="-2" pref="107" max="-2" attributes="1"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="shooterSpeedLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="shooterSpeedField" min="-2" pref="116" max="-2" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <Component id="shooterRotationLabel" min="-2" pref="146" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="shooterRotationField" min="-2" pref="121" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Component id="jSeparator3" alignment="0" pref="526" max="32767" attributes="0"/>
+          <Component id="jSeparator1" alignment="1" pref="526" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="collectorStatesLabel" min="-2" pref="99" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="collectorSpinLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="collectorSpinField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <Component id="collectorLiftLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="collectorLiftField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="collectorConveyorLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="collectorConveyorField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="shooterPistonLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="shooterPistonField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
+          </Group>
+          <Component id="jSeparator4" alignment="0" pref="526" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="leftMotorSpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="leftMotorSpeedField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rightMotorSpeedField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rightMotorSpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="shooterSpeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="shooterSpeedField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="shooterRotationField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="shooterRotationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="collectorStatesLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="collectorSpinLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="collectorSpinField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="collectorConveyorField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="collectorConveyorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="collectorLiftField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="collectorLiftLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="shooterPistonLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="shooterPistonField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <Component id="Enable" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="disable" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="Enable">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Enable"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EnableActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="disable">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Disable"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="leftMotorSpeedField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="left motor speed"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="leftMotorSpeedLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Left Motor Speed"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="rightMotorSpeedField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="right motor speed"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="rightMotorSpeedLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Right Motor Speed:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="shooterSpeedLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Shooter Speed:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="shooterSpeedField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Shooter Speed   "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="shooterRotationLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Shooter Rotation Speed:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="shooterRotationField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="Shooter Rotation"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator3">
+    </Component>
+    <Component class="javax.swing.JLabel" name="collectorStatesLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Collector States:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="collectorSpinLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Spin:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="collectorSpinField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="1"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="collectorSpinFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="collectorLiftLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lift:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="collectorLiftField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="-1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="collectorConveyorLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Conveyor"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="collectorConveyorField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="1"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="collectorConveyorFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="shooterPistonLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Shooter Piston:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="shooterPistonField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="text" type="java.lang.String" value="1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator4">
+    </Component>
+  </SubComponents>
+</Form>

@@ -1,0 +1,1 @@
+This is a robot simulator for the 1816 Java code. Our goal with this is to allow us to quickly alter our robot code and test it without ever touching our robot.
