@@ -102,10 +102,16 @@ public class Zephyr implements RobotThread{
         display.setRightSpeed(Double.toString(rightDrive));
         display.setShooterSpeed(Double.toString(shooterSpeed));
         display.setShooterRotation(Double.toString(shooterRotateSpeed));
-        display.setShooterPiston(Boolean.toString(convMove));
+        display.setShooterPiston(Boolean.toString(ballLoaderUp));
         display.setCollectorSpin(Boolean.toString(collectorSpin));
         display.setCollectorConveyorField(Boolean.toString(convMove));
         display.setCollectorLift(Integer.toString(collectorLift));
+        display.updateLog("Left Speed: "+Double.toString(leftDrive)+ ", Right Speed: "
+                            +Double.toString(rightDrive)+", Shooter Speed: "+Double.toString(shooterSpeed)
+                            +", Shooter Rotation: "+ Double.toString(shooterRotateSpeed)
+                            +", Piston: "+Boolean.toString(ballLoaderUp)+", Collector Spin: "
+                            +Boolean.toString(collectorSpin)+", Conveyor: "+Boolean.toString(convMove)
+                            +", Collector Lift: "+Integer.toString(collectorLift));
     }
     
     /**

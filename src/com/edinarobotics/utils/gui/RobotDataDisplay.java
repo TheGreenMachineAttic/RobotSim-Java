@@ -1,6 +1,11 @@
 package com.edinarobotics.utils.gui;
 
 import com.edinarobotics.utils.threads.ThreadManager;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.text.DefaultCaret;
 
 /**
  *
@@ -9,7 +14,8 @@ import com.edinarobotics.utils.threads.ThreadManager;
 public class RobotDataDisplay extends javax.swing.JFrame {
     /** Creates new form RobotDataDisplay */
     ThreadManager manager;
-    
+    Date dateTime = new Date();
+    long timeOffset;
     public RobotDataDisplay(){
         initComponents();
         super.setTitle("1816 Simulator");
@@ -19,6 +25,9 @@ public class RobotDataDisplay extends javax.swing.JFrame {
         super.setTitle("1816 Simulator");
         this.manager = manager;
         this.manager.start(this);
+        timeOffset = dateTime.getTime();
+        DefaultCaret caret = (DefaultCaret)logField.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -50,15 +59,15 @@ public class RobotDataDisplay extends javax.swing.JFrame {
         shooterPistonField.setText(speed);
     }
     public void updateLog(String event){
-        logField.append("Event: "+ event+"\n");
+        Date currentDate = new Date();
+        logField.append("Event Time: "+Long.toString((currentDate.getTime()-timeOffset)) 
+                +" : "+ event+"\n");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jSeparator2 = new javax.swing.JSeparator();
-        Enable = new javax.swing.JButton();
-        disable = new javax.swing.JButton();
         leftMotorSpeedField = new javax.swing.JTextField();
         leftMotorSpeedLabel = new javax.swing.JLabel();
         rightMotorSpeedField = new javax.swing.JTextField();
@@ -81,23 +90,15 @@ public class RobotDataDisplay extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         logField = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        disable = new javax.swing.JMenu();
+        Enable = new javax.swing.JMenuItem();
+        Disable = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        printLog = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
-        Enable.setText("Enable");
-        Enable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EnableActionPerformed(evt);
-            }
-        });
-
-        disable.setText("Disable");
-        disable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                disableActionPerformed(evt);
-            }
-        });
 
         leftMotorSpeedField.setEditable(false);
         leftMotorSpeedField.setText("left motor speed");
@@ -157,36 +158,52 @@ public class RobotDataDisplay extends javax.swing.JFrame {
         logField.setText("Session Log.");
         jScrollPane1.setViewportView(logField);
 
+        disable.setText("State");
+        disable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disableActionPerformed(evt);
+            }
+        });
+
+        Enable.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        Enable.setText("Enable");
+        Enable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnableActionPerformed(evt);
+            }
+        });
+        disable.add(Enable);
+
+        Disable.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        Disable.setText("Disable");
+        Disable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DisableActionPerformed(evt);
+            }
+        });
+        disable.add(Disable);
+
+        jMenuBar1.add(disable);
+
+        jMenu2.setText("Log");
+
+        printLog.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
+        printLog.setText("Output Log");
+        printLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printLogActionPerformed(evt);
+            }
+        });
+        jMenu2.add(printLog);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(leftMotorSpeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(leftMotorSpeedField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(rightMotorSpeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rightMotorSpeedField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(shooterSpeedLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(shooterSpeedField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(shooterRotationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(shooterRotationField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(disable, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Enable, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
             .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
@@ -210,10 +227,31 @@ public class RobotDataDisplay extends javax.swing.JFrame {
                 .addComponent(shooterPistonField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
             .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(leftMotorSpeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(leftMotorSpeedField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(rightMotorSpeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rightMotorSpeedField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(shooterSpeedLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(shooterSpeedField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addComponent(shooterRotationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(shooterRotationField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(leftMotorSpeedLabel)
@@ -244,35 +282,42 @@ public class RobotDataDisplay extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Enable)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(disable)
-                        .addGap(22, 22, 22))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void collectorSpinFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectorSpinFieldActionPerformed
+    }//GEN-LAST:event_collectorSpinFieldActionPerformed
+
+    private void collectorConveyorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectorConveyorFieldActionPerformed
+    }//GEN-LAST:event_collectorConveyorFieldActionPerformed
+
+    private void disableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableActionPerformed
+    }//GEN-LAST:event_disableActionPerformed
+
+    private void DisableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisableActionPerformed
+        manager.disable();
+    }//GEN-LAST:event_DisableActionPerformed
+
     private void EnableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnableActionPerformed
         manager.enable();
     }//GEN-LAST:event_EnableActionPerformed
 
-    private void collectorSpinFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectorSpinFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_collectorSpinFieldActionPerformed
-
-    private void collectorConveyorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectorConveyorFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_collectorConveyorFieldActionPerformed
-
-    private void disableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableActionPerformed
+    private void printLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printLogActionPerformed
         manager.disable();
-    }//GEN-LAST:event_disableActionPerformed
+        try{
+            BufferedWriter logWriter = new BufferedWriter(new FileWriter(
+                                    JOptionPane.showInputDialog(null, 
+                                        "What is the location of the file to write to?")));
+            logWriter.close();
+        }
+        catch(Exception e){
+            System.err.println(e);
+        }
+    }//GEN-LAST:event_printLogActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,7 +355,8 @@ public class RobotDataDisplay extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Enable;
+    private javax.swing.JMenuItem Disable;
+    private javax.swing.JMenuItem Enable;
     private javax.swing.JTextField collectorConveyorField;
     private javax.swing.JLabel collectorConveyorLabel;
     private javax.swing.JTextField collectorLiftField;
@@ -318,7 +364,9 @@ public class RobotDataDisplay extends javax.swing.JFrame {
     private javax.swing.JTextField collectorSpinField;
     private javax.swing.JLabel collectorSpinLabel;
     private javax.swing.JLabel collectorStatesLabel;
-    private javax.swing.JButton disable;
+    private javax.swing.JMenu disable;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -327,6 +375,7 @@ public class RobotDataDisplay extends javax.swing.JFrame {
     private javax.swing.JTextField leftMotorSpeedField;
     private javax.swing.JLabel leftMotorSpeedLabel;
     private javax.swing.JTextArea logField;
+    private javax.swing.JMenuItem printLog;
     private javax.swing.JTextField rightMotorSpeedField;
     private javax.swing.JLabel rightMotorSpeedLabel;
     private javax.swing.JTextField shooterPistonField;
