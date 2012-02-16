@@ -1,14 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * RobotDataDisplay.java
- *
- * Created on Feb 15, 2012, 7:14:23 PM
- */
 package com.edinarobotics.utils.gui;
+
+import com.edinarobotics.utils.threads.ThreadManager;
 
 /**
  *
@@ -16,11 +8,17 @@ package com.edinarobotics.utils.gui;
  */
 public class RobotDataDisplay extends javax.swing.JFrame {
     /** Creates new form RobotDataDisplay */
-
+    ThreadManager manager;
     
     public RobotDataDisplay(){
         initComponents();
         super.setTitle("1816 Simulator");
+    }
+    public RobotDataDisplay(ThreadManager manager){
+        initComponents();
+        super.setTitle("1816 Simulator");
+        this.manager = manager;
+        this.manager.start(this);
     }
     /** This method is called from within the constructor to
      * initialize the form.
@@ -95,6 +93,11 @@ public class RobotDataDisplay extends javax.swing.JFrame {
         });
 
         disable.setText("Disable");
+        disable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disableActionPerformed(evt);
+            }
+        });
 
         leftMotorSpeedField.setEditable(false);
         leftMotorSpeedField.setText("left motor speed");
@@ -256,7 +259,7 @@ public class RobotDataDisplay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EnableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnableActionPerformed
-        // TODO add your handling code here:
+        manager.enable();
     }//GEN-LAST:event_EnableActionPerformed
 
     private void collectorSpinFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectorSpinFieldActionPerformed
@@ -266,6 +269,10 @@ public class RobotDataDisplay extends javax.swing.JFrame {
     private void collectorConveyorFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectorConveyorFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_collectorConveyorFieldActionPerformed
+
+    private void disableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disableActionPerformed
+        manager.disable();
+    }//GEN-LAST:event_disableActionPerformed
 
     /**
      * @param args the command line arguments

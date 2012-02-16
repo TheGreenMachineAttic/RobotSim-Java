@@ -10,6 +10,7 @@ import java.util.Vector;
 public class AutonomousManager {
     private AutonomousStep[] autonomousSteps;
     private Zephyr robot;
+    private int currentStep = 0;
     
     /**
      * Constructs an AutonomousManager using the given steps.
@@ -53,10 +54,8 @@ public class AutonomousManager {
      * steps have finished.
      */
     public void start(){
-        int currentStep = 0;
         autonomousSteps[currentStep].start();
-        while(robot.isEnabled && robot.isAutonomous){
-            //Autonomous loop
+             //Autonomous loop
             if(!autonomousSteps[currentStep].isFinished()){
                 //Step not finished, call run().
                 autonomousSteps[currentStep].run();
@@ -72,7 +71,7 @@ public class AutonomousManager {
                 autonomousSteps[currentStep].start();
             }
             //End of autonomous loop
-        }
+        
         autonomousSteps[currentStep].stop();
     }
 }

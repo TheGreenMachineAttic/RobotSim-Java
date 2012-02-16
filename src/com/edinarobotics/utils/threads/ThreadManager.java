@@ -1,5 +1,6 @@
 package com.edinarobotics.utils.threads;
 
+import com.edinarobotics.utils.gui.RobotDataDisplay;
 import com.edinarobotics.zephyr.Zephyr;
 
 /**
@@ -14,12 +15,16 @@ public class ThreadManager {
         robot.modeIsOperatorControl = modeToRun;
         robotThread = new Thread(robot);
         robot.continueRunning = true;
+        robot.isEnabled = true;
     }
-    public void start(){
+    public void start(RobotDataDisplay display){
+        robot.display = display;
        robotThread.start();
+       System.out.println("Started");
     }
     public void enable(){
-        robot.isEnabled = true;
+        robot.isEnabled = !robot.isEnabled;
+        System.out.println("Enabled");
     }
     public void disable(){
         robot.isEnabled = false;

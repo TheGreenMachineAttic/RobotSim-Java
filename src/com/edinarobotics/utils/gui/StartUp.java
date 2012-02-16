@@ -10,6 +10,8 @@
  */
 package com.edinarobotics.utils.gui;
 
+import com.edinarobotics.utils.threads.ThreadManager;
+
 /**
  *
  * @author Danny
@@ -84,13 +86,13 @@ public class StartUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void teleopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teleopActionPerformed
-        RobotDataDisplay display = new RobotDataDisplay();
+        RobotDataDisplay display = new RobotDataDisplay(new ThreadManager(true));
         display.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_teleopActionPerformed
 
     private void autonomousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autonomousActionPerformed
-        RobotDataDisplay display = new RobotDataDisplay();
+        RobotDataDisplay display = new RobotDataDisplay(new ThreadManager(false));
         display.setVisible(true);
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_autonomousActionPerformed

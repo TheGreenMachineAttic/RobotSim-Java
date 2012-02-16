@@ -40,15 +40,13 @@ public class Zephyr implements RobotThread{
      public boolean convMove = false;
      public boolean shifters = false;
      //Gui Variables
-     public boolean isEnabled;
+     public boolean isEnabled = true;
      public boolean isAutonomous;
      public boolean isOperatorControl;
      public RobotDataDisplay display;
      public boolean modeIsOperatorControl;
      public boolean continueRunning;
-    /**
-     * This function is called once each time the robot enters autonomous mode.
-     */
+    
     public void run(){
         while(continueRunning){
             if(isEnabled){
@@ -58,9 +56,26 @@ public class Zephyr implements RobotThread{
                 else{
                     autonomous();
                 }
+                 try{
+                    Thread.sleep(1);
+                }
+                catch(Exception e){
+                    System.err.println(e);
+                }
+            }
+            else{
+                try{
+                    Thread.sleep(1);
+                }
+                catch(Exception e){
+                    System.err.println(e);
+                }
             }
         }
     }
+    /**
+     * This function is called once each time the robot enters autonomous mode.
+     */
     public void autonomous() {
         AutonomousStep[] steps = new AutonomousStep[1];
         steps[0] = new IdleStopStep(this);
@@ -74,11 +89,8 @@ public class Zephyr implements RobotThread{
     
     public void operatorControl() 
     {
-        while(isOperatorControl && isEnabled){
-            //TODO Add support for the joysticks.
-            System.out.println("In teleop and proud");
-            mechanismSet();
-        }
+        System.out.println("Teleop");
+        mechanismSet();
     }
     
     
